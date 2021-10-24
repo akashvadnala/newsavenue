@@ -230,7 +230,7 @@ def sign_up(request):
             else:
                 user = User.objects.create_user(username = un, password = pwd, email = email,first_name = firstname, last_name = lastname)
                 user.save()
-                reg = register_table(user=user,email=email)
+                reg = register_table(firstname=firstname,lastname=lastname,email=email,user=user)
                 reg.save()
                 user = authenticate(username=un,password=pwd)
                 if user:
