@@ -1,0 +1,103 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% static "images" as baseUrl %}
+
+{% block container-box %}
+    <div class="container-box">
+        <div class="news-open">
+            <div class="title">
+                {{post.post_title}}
+            </div>
+            <div class="dll">
+                <div class="dl">
+                    <div class="date">
+                        {{post.post_date}}
+                    </div>
+                    <div class="place">
+                        {{post.place}}
+                    </div>
+                </div>
+                <div class="like">
+    
+                </div>
+            </div>
+            <div class="cover">
+                <img  style="width: 100%;
+                max-height: 500px;object-fit: cover;"  src="{{ post.cover.url }}" alt="{{ post.post_title }}">
+            </div>
+            <div class="desc">
+                {{post.desc}}
+            </div>
+            <div class="comment">
+                
+                <div class="comment-in">
+                    <div style="display:none;">
+                        <input type="hidden" id="commid" value="{{post.id}}">
+                    </div>
+                    <div class="icon">
+                        <img src="{% static 'images/comment.jpeg' %}" alt="">
+                    </div>
+                    <div class="ta">
+                        <textarea id="comm" name="desc" placeholder="Comment Here.." rows="1" style="resize: none;"></textarea>
+                    </div>
+                    <div class="sub">
+                        <button onclick="postcomment()">
+                            <img src="{% static 'images/send_icon.png' %}" alt="">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="comments"> 
+                {% for c in comments %}
+                    <div class="each-comment">
+                        <span class="name">
+                            {{c.user.username}}
+                        </span> 
+                        <span class="date">
+                            {{c.created}}
+                        </span>  
+                        <br> 
+                        <span class="desc">
+                            {{c.desc}}
+                        </span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <script>
+
+function postcomment(){
+    let comm = $("#comm").val();
+    let id = $("#commid").val();
+    if(comm.length>0){
+        $.ajax({
+        type:'GET',
+        url: "{% url 'comments' %}",
+        data:{
+            'comm' : comm,
+            'id' : id,
+        },
+        dataType:'json',
+        success:function(data){
+            $(".comments").prepend(`
+                <div class="each-comment">
+                    <span class="name">
+                        ${data.user}
+                    </span> 
+                    <span class="date">
+                        ${data.created}
+                    </span>  
+                    <br> 
+                    <span class="desc">
+                        ${data.desc}
+                    </span>
+                </div>
+            `);     
+            $("#comm").val('');
+        },
+    });
+    }
+}
+</script>
+{% endblock %}

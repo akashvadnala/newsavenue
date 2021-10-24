@@ -1,0 +1,127 @@
+.login,.signup{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000000;
+    background-color: rgba(100,100,100,.7);
+    backdrop-filter: blur(15px);
+}
+
+.delmodel{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+.login .login-in,.signup .signup-in{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px rgba(150,150,150,.9);
+    background: rgba(255,255,255,.9);
+    border-radius: 10px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 80px 80px;
+    max-width: 500px;
+    max-height: 70%;
+    z-index: 10000;
+    overflow: scroll;
+}
+
+.login .login-in .login-in-in{
+    
+}
+
+.login .login-in .con div,.signup .signup-in .con div{
+    margin: 5px;
+}
+
+.login .login-in .head,.signup .signup-in .head{
+    text-align: center;
+}
+
+.login .login-in .con input,.signup .signup-in .con input{
+    border: solid 1px rgb(192,192,192);
+    padding: 10px;
+    font-size: 16px;
+    margin: 7px;
+    border-radius: 7px;
+    width: 280px;
+    height: 30px;
+    outline: none;
+}
+
+.login .login-in .con input:focus,.signup .signup-in .con input:focus{
+    border: solid 2px #06c;
+    margin: 6px;
+}
+
+.login .login-in .con input[type="checkbox"]:focus,.signup .signup-in .con input[type="checkbox"]:focus{
+    margin: 7px;
+}
+
+.login .login-in .con .rememberme{
+    display: flex;
+    align-items: center;
+}
+
+.login .login-in .con .rememberme input[type="checkbox"]{
+    width: 18px;
+    height: 18px;
+}
+
+.login .login-in .con .sub,.signup .signup-in .con .sub{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.login .login-in .con .sub button,.signup .signup-in .con .sub button{
+    width: 300px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    padding: 20px;
+    border-radius: 7px;
+    background: #06c;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.login .login-in .con .sub button:hover,.signup .signup-in .con .sub button:hover{
+    background: #07d;
+}
+
+.login .login-in .su,.signup .signup-in .su{
+    margin: 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login .login-in .su button,.signup .signup-in .su button{
+    color: #06c;
+    font-size: 16px;
+    text-decoration: none;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.login .login-in .su button:hover,.signup .signup-in .su button:hover{
+    text-decoration: underline;
+}

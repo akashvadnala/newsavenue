@@ -1,0 +1,67 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <title>
+           {% block title %} {{page_title}} {% endblock %}
+        </title>
+        {% block links%}
+            <link href="{% static 'styles/header.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static 'styles/container-box.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static 'styles/news_open.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static 'styles/login.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static 'styles/news_upload.css' %}" rel="stylesheet" type="text/css">
+            <script src="{% static 'js/base.js' %}"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        {% endblock %}
+    </head>
+    <body id="body">
+        {% block home %}
+            {% block header %}
+                {% include 'blog/header.html' %}
+            {% endblock %}
+
+            {% block modal %}
+                {% include 'blog/login.html' %}
+            {% endblock %}
+
+            {% block container-box %}
+                {% include 'blog/container-box.html' %}
+            {% endblock %}
+
+            {% block footer %}
+                {% include 'blog/footer.html' %}
+            {% endblock %}
+
+        {% endblock %}
+
+        <script>
+            function delmodel(){
+                $(".login").css('display','none');
+                $(".signup").css('display','none');
+                $("body").css('overflow','auto');
+            }
+            function signup(){
+                delmodel();
+                $(".signup").css('display','block');
+                $('body').css('overflow','hidden');
+                $(".container-box").css('margin-right','10px')
+            }
+            function login(){
+                delmodel();
+                $(".login").css('display','block');
+                $('body').css('overflow','hidden');
+                $(".container-box").css('margin-right','10px')
+            }
+            function close_log(){
+                $(".log_data").remove();
+            }
+        </script>
+    
+    </body>
+</html>

@@ -1,0 +1,61 @@
+.container-box .news-upload{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-box .news-upload .con .head{
+    text-align: center;
+}
+
+.container-box .news-upload .con .inp{
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 150px calc(100% - 50%);
+    align-items: center;
+}
+
+.container-box .news-upload .con .inp span:first-child{
+    text-align: end;
+    margin-right: 15px;
+}
+
+.container-box .news-upload .con .inp span:nth-child(2) input,
+.container-box .news-upload .con .inp span:nth-child(2) textarea{
+    width: 350px;
+    height: 40px;
+    font-size: 16px;
+    padding: 5px 12px;
+    border-radius: 5px;
+    border: 1px solid rgb(192,192,192);
+    margin: 1.5px;
+    outline: none;
+}
+
+.container-box .news-upload .con .inp span:nth-child(2) textarea{
+    height: 160px;
+}
+
+.container-box .news-upload .con .inp span:nth-child(2) input:focus,
+.container-box .news-upload .con .inp span:nth-child(2) textarea:focus{
+    border: 2.5px solid rgb(150,150,150);
+    margin: 0px;
+}
+
+.container-box .news-upload .con .sub{
+    display: flex;
+    justify-content: center;
+}
+
+.container-box .news-upload .con .sub button{
+    padding: 10px 30px;
+    font-size: 16px;
+    border: 0;
+    background-color: rgb(192,192,192);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.container-box .news-upload .con .sub button:hover{
+    background-color: rgb(160,160,160);
+}

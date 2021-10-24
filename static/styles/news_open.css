@@ -1,0 +1,117 @@
+.container-box .news-open{
+    width:50%;
+    margin-top: 25px;
+    margin-left: 25%;
+}
+
+.container-box .news-open .title{
+    font-size: 35px;
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+
+.container-box .news-open .dll .dl .date,
+.container-box .news-open .dll .dl .place{
+    color: rgb(100,100,100);
+    margin-bottom: 5px;
+    font-size: 14px;
+
+}
+
+.container-box .news-open .cover{
+    max-width: 100%;
+    margin: 20px 0 20px 0;
+}
+
+.container-box .news-open .desc{
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+.container-box .news-open .comment .comment-in {
+    display: grid;
+    grid-template-columns: 50px calc(100% - 110px) 60px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px rgb(100,100,100);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+.container-box .news-open .comment .comment-in .icon img{
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+}
+
+.container-box .news-open .comment .comment-in .ta textarea{
+    width: calc(100% - 20px);
+    height: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: black;
+    outline: none;
+    border: none;
+}
+
+.container-box .news-open .comment .comment-in .sub button{
+    padding: 0;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border: none;
+    align-items: center;
+}
+
+.container-box .news-open .comment .comment-in .sub button img{
+    width: 30px;
+    height: 30px;
+}
+
+.container-box .news-open .comments{
+    margin-bottom: 100px;
+}
+
+.container-box .news-open .comments .each-comment{
+    margin-bottom: 20px;
+}
+
+.container-box .news-open .comments .each-comment .name{
+    margin-right: 10px;
+    font-size: 15px;
+}
+.container-box .news-open .comments .each-comment .date{
+   font-size: 13px;
+}
+.container-box .news-open .comments .each-comment .desc{
+    color: rgb(50,50,50);
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.container-box .news-open .comments .each-comment .desc{
+
+}
+@media only screen and (max-width:1000px) {
+
+    .container-box .news-open{
+        width:60%;
+        margin-left: 20%;
+    }
+
+
+}
+
+@media only screen and (max-width:800px) {
+
+    .container-box .news-open{
+        width:80%;
+        margin-left: 10%;
+    }
+
+
+}

@@ -1,0 +1,80 @@
+{% load static %}
+{% static "images" as baseUrl %}
+
+<div class="login" id="login">
+    <div class="delmodel" type="button" onclick="delmodel()"></div>
+    <div class="login-in">
+        <div class="login-in-in">
+            <div class="head">
+                <h1>Login</h1>
+            </div>
+
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="con">
+                
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
+                
+                <div class="user">
+                    <input type="text" name="username" placeholder="Username or Email" required>
+                </div> 
+                <div class="password">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="rememberme">
+                    <span><input type="checkbox" name="rememberme" checked></span>
+                    <span>rememberme</span>
+                </div>
+                <div class="sub">
+                    <button>Submit</button>
+                </div>
+            </div>
+        </form>
+            <div class="su">
+                <button onclick="signup()">Signup</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="signup" id="signup">
+    <div class="delmodel" type="button" onclick="delmodel()"></div>
+    <div class="signup-in">
+        <div class="signup-in-in">
+            <div class="head">
+                <h1>Sign Up</h1>
+            </div>
+
+        <form method="POST" action="{% url 'signup' %}">
+            {% csrf_token %}
+            <div class="con">
+                
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
+                <div class="firstname">
+                    <input type="text" name="firstname" placeholder="First Name" required>
+                </div> 
+                <div class="lastname">
+                    <input type="text" name="lastname" placeholder="Last Name">
+                </div> 
+                <div class="email">
+                    <input type="text" name="email" placeholder="Email" required>
+                </div> 
+                <div class="user">
+                    <input type="text" name="username" placeholder="Username" required>
+                </div> 
+                <div class="password">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="password">
+                    <input type="password" name="confirm-password" placeholder="Confirm Password" required>
+                </div>
+                <div class="sub">
+                    <button>Submit</button>
+                </div>
+            </div>
+        </form>
+            <div class="su">
+                <button onclick="login()">Login</button>
+            </div>
+        </div>
+    </div>
+</div>

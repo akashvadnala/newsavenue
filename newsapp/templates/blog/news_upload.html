@@ -1,0 +1,62 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% static "images" as baseUrl %}
+
+{% block container-box %}
+    <div class="container-box">
+        <div class="news-upload">
+            {% if user.is_authenticated %}
+                {% if reg.admin %}
+                <form method="POST" action="{% url 'uploadnews' %}">
+                    {% csrf_token %}
+                    <div class="con">
+                        <div class="head">
+                            <h1>Upload News</h1>
+                        </div>
+                        <div class="inp">
+                            <span>Category</span>
+                            <span>
+                                <input type="text" name="cate" placeholder="Category" required>
+                            </span>
+                        </div>
+                        <div class="inp">
+                            <span>Location</span>
+                            <span>
+                                <input type="text" name="location" placeholder="Location">
+                            </span>
+                        </div>
+                        <div class="inp">
+                            <span>Title</span>
+                            <span>
+                                <input type="text" name="title" placeholder="Title" required>
+                            </span>
+                        </div>
+                        <div class="inp">
+                            <span>Picture</span>
+                            <span>
+                                <input type="file" name="cover" accept="image/*" required>
+                            </span>
+                        </div>
+                        <div class="inp">
+                            <span>Description</span>
+                            <span>
+                                <textarea name="desc" cols="30" rows="10" placeholder="Description" required></textarea>
+                            </span>
+                        </div>
+                        <div class="sub">
+                            <button>Submit</button>
+                        </div>
+                    </div>
+                    </form>
+                {% else %}
+                    <h1>Unable to upload article</h1>
+                {% endif %}
+            {% else %}
+                <h1>Please Login</h1>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+<script>
+    
+</script>

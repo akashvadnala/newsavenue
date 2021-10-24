@@ -1,0 +1,124 @@
+{% load static %}
+{% static "images" as baseUrl %}
+
+<div class="header">
+    <div class="top">
+        <div class="logo">
+            <div class="logo-in">
+                <a href="{% url 'home' %}">
+                    NEWSAVENUE
+                </a>
+           </div>
+        </div>
+        
+    </div>
+    <div class="bottom">
+        <div class="menu">
+            {% if user.is_authenticated %}
+            <button onclick="toggledd()" class="name">
+                <span>Hello, {{reg.firstname}} </span>
+                <span class="arr">  &nbsp; &nbsp; &nbsp;  &#10092</span>
+            </button>
+            
+            
+            {% else %}
+            <span><button onclick="login()">Login</button></span>
+            {% endif %}
+        </div>
+        <div class="cat">
+            {% if cat %}
+            {% for c in cat %}
+                <a href="{% url 'category' c.w %}">{{c.n}}</a>
+            {% endfor %}
+            {% endif %}
+        </div>
+        <div class="search">
+            <form action="{% url 'search' %}" method="GET">
+                <div title="Search news by category, place, time.." class="search-in">
+                    <div class="im">
+                        <img src="{% static 'images/search_icon.png' %}" alt="search_icon" >
+                    </div>
+                    <div class="inn">
+                        <input type="search" autocomplete="off" type="search" name="b"  placeholder="Search news by category, place, time.." value="{{sea}}">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="min-header">
+    <div class="top">
+        <div type="button" class="menu">
+            <img src="{% static 'images/menu.png' %}" alt="">
+        </div>
+        <div class="logo">
+            <div class="logo-in">
+                <a href="{% url 'home' %}">
+                    NEWSAVENUE
+                </a>
+           </div>
+        </div>
+        <div type="button" class="profile">
+            <img src="{% static 'images/profile.png' %}" alt="">
+        </div>
+    </div>
+</div>
+{% if user.is_authenticated %}
+<div class="maxw toggle">
+    {% if reg.admin %}
+    <div><button onclick="window.location.href=`{% url 'addnews' %}`">Add News</button></div>
+    {% endif %}
+    <div><button onclick="window.location.href=`{% url 'logout' %}`">Logout</button></div>
+</div>
+{% endif %}
+<div class="minw menu-toggle">
+    <div class="search">
+        <form action="{% url 'search' %}" method="GET">
+            <div title="Search news by category, place, time.." class="search-in">
+                <div class="im">
+                    <img src="{% static 'images/search_icon.png' %}" alt="search_icon" >
+                </div>
+                <div class="inn">
+                    <input type="search" autocomplete="off" type="search" name="b"  placeholder="Search news by category, place, time.." value="{{sea}}">
+                </div>
+            </div>
+        </form>
+    </div>
+    {% if cat %}
+    {% for c in cat %}
+        <a href="{% url 'category' c.w %}"><div>{{c.n}}</div></a>
+    {% endfor %}
+    {% endif %}
+</div>
+<div class="minw profile-toggle">
+    {% if user.is_authenticated %}
+        <div><button type="reset">Hello {{reg.firstname}}</button></div>
+        {% if reg.admin %}
+            <div><button onclick="window.location.href=`{% url 'addnews' %}`">Add News</button></div>
+        {% endif %}
+        <div><button onclick="window.location.href=`{% url 'logout' %}`">Logout</button></div>
+    {% else %}
+        <div><button onclick="login()">Login</button></div>
+    {% endif %}
+</div>
+
+<script>
+    $(function(){
+        $('.header .bottom .menu .name').on('click',function(){
+            $('.toggle').toggleClass('show');
+            $('.arr').css('translate','rotate( 180deg )');
+        });
+    });
+    $(function(){
+        $('.min-header .menu').on('click',function(){
+            $('.profile-toggle').removeClass('show');
+            $('.menu-toggle').toggleClass('show');
+        });
+    });
+    $(function(){
+        $('.min-header .profile').on('click',function(){
+            $('.menu-toggle').removeClass('show');
+            $('.profile-toggle').toggleClass('show');
+        });
+    });
+</script>
