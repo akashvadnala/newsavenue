@@ -7,41 +7,42 @@
         <div class="news-upload">
             {% if user.is_authenticated %}
                 {% if reg.admin %}
-                <form method="POST" action="{% url 'uploadnews' %}" enctype="multipart/form-data">
+                <form method="POST" action="{% url 'editsubmit' post.sha %}" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="con">
                         <div class="head">
-                            <h1>Upload News</h1>
+                            <h1>Edit News</h1>
                             <p>* Required Field</p>
                         </div>
+                        <input type="hidden" name="id" value="{{post.id}}">
                         <div class="inp">
                             <span>*Category</span>
                             <span>
-                                <input type="text" name="cate" placeholder="Category" required>
+                                <input type="text" name="cate" placeholder="Category" value="{{post.category}}" required>
                             </span>
                         </div>
                         <div class="inp">
                             <span>Location</span>
                             <span>
-                                <input type="text" name="location" placeholder="Location">
+                                <input type="text" name="location" value="{{post.place}}" placeholder="Location">
                             </span>
                         </div>
                         <div class="inp">
                             <span>*Title</span>
                             <span>
-                                <input type="text" name="title" placeholder="Title" required>
+                                <input type="text" name="title" placeholder="Title" value="{{post.post_title}}" required>
                             </span>
                         </div>
                         <div class="inp">
-                            <span>*Picture</span>
+                            <span>Picture</span>
                             <span>
-                                <input type="file" name="newsimage" accept="image/*" required>
+                                <input type="file" name="newsimage" accept="image/*" value="{{post.cover.url}}">
                             </span>
                         </div>
                         <div class="inp">
                             <span>*Description</span>
                             <span>
-                                <textarea name="desc" cols="30" rows="10" placeholder="Description" required></textarea>
+                                <textarea name="desc" cols="30" rows="10" placeholder="Description" style="white-space: pre-wrap;" required>{{post.desc}}</textarea>
                             </span>
                         </div>
                         <div class="sub">
@@ -50,7 +51,7 @@
                     </div>
                     </form>
                 {% else %}
-                    <h1>Unable to upload article</h1>
+                    <h1>Unable to edit article</h1>
                 {% endif %}
             {% else %}
                 <h1>Please Login</h1>

@@ -8,7 +8,7 @@ from .models import *
 import hashlib 
 from datetime import datetime,date
 import re
-from django.http import JsonResponse
+from django.http import JsonResponse, request
 from django.views.generic import ListView,View
 from django.contrib import messages
 
@@ -133,7 +133,7 @@ def news(request,sha):
         context['post']=post
         comments=Comment.objects.filter(post=post).order_by('-created')
         context['comments']=comments
-        context['page_title'] = post.post_title + 'NEWSAVENUE'
+        context['page_title'] = post.post_title + ' - NEWSAVENUE'
         context['cat']=cate()
         check=register_table.objects.filter(user__id=request.user.id)
         if len(check)>0:
@@ -164,6 +164,64 @@ class comment(View):
         print(data)
         return JsonResponse(data)
 
+class like(View):
+    def get(self,request):
+        id = request.GET.get('id',None)
+        data={}
+        post = Post.objects.get(id=id)
+        if register_table.objects.filter(user=request.user).exists():
+            if request.user in post.likes.all():
+                post.likes.remove(request.user)
+                data['like'] = False
+            else:
+                post.likes.add(request.user)
+                data['like'] = True
+            data['likecount'] = post.num_likes()
+        print(data)
+        return JsonResponse(data)
+
+def openedit(request,sha):
+    context={}
+    check=Post.objects.filter(sha=sha)
+    if len(check)>0:
+        post=Post.objects.get(sha=sha)
+        context['post']=post
+        comments=Comment.objects.filter(post=post).order_by('-created')
+        context['comments']=comments
+        context['page_title'] = post.post_title + 'NEWSAVENUE'
+        context['cat']=cate()
+        check=register_table.objects.filter(user__id=request.user.id)
+        if len(check)>0:
+            reg=register_table.objects.get(user__id=request.user.id)
+            context['reg']=reg
+        context['page_title'] = 'EDIT' + str(post.post_title)
+        context['cat']=cate()
+    return render(request,'blog/openedit.html',context)
+
+def dele(request,id):
+    Post.objects.get(id=id).delete()
+    return redirect('/')
+
+def editsubmit(request,sha):
+    context={}
+    if request.method=="POST":
+        id =request.POST['id']
+        post = Post.objects.get(id=id)
+        post.post_title = request.POST['title']
+        post.category = request.POST['cate']
+        post.place = request.POST['location']
+        post.desc=request.POST['desc']
+        if "newsimage" in request.FILES:
+            post.cover = request.FILES["newsimage"]
+        post.save()
+    check=register_table.objects.filter(user__id=request.user.id)
+    if len(check)>0:
+        reg=register_table.objects.get(user__id=request.user.id)
+        context['reg']=reg
+    context['page_title'] = post.post_title + ' - NEWSAVENUE'
+    context['cat']=cate()
+    return redirect('/news/'+str(post.sha))
+
 def addnews(request):
     context={}
     context['page_title']='Upload News'
@@ -188,7 +246,7 @@ def uploadnews(request):
         desc=request.POST['desc']
         user=request.user
         print('image')
-        image = 'covers/'+request.POST.get("cover")
+        image = request.FILES["newsimage"]
         print(image)
         print('image uploaded')
         upload=Post(uname=user,post_title=title,desc=desc,category=cate,place=place,cover=image)

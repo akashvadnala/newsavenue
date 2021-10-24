@@ -54,7 +54,7 @@ body{
     display: block;
     width:100%;
     z-index: 10000000;
-    background: rgba(240,240,240,.7);
+    background: rgba(235,235,235,.7);
     backdrop-filter: blur(15px);
     
 }
@@ -68,9 +68,6 @@ body{
 }
 
 .header .bottom{
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0px;
     display: grid;
     grid-template-columns: 25% 50% 25%;
     height: 50px;
@@ -81,10 +78,12 @@ body{
 
 
 .header .bottom div{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0px 5%;
 }
 
 .header .bottom .menu button{
@@ -117,7 +116,7 @@ body{
     -moz-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
-    
+    z-index: 10000;
 }
 
 .toggle div{
@@ -164,8 +163,8 @@ body{
     font-size: 12px;
     margin: 0 1%;
 }
-.header .bottom .search{
-    width: 90%;
+.header .bottom .search form{
+    width: 70%;
 }
 
 .header .bottom .search form .search-in{
@@ -175,6 +174,7 @@ body{
     z-index: 100000000;
     background-color: rgba(255,255,255,.7);
     height: 30px;
+    width: 100%;
     border-radius: 5px;
 }
 
@@ -220,7 +220,7 @@ body{
         justify-content: center;
         width:100%;
         z-index: 10000000;
-        background: rgba(240,240,240,.7);
+        background: rgba(235,235,235,.7);
         backdrop-filter: blur(15px);
     }
 

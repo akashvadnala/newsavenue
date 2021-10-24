@@ -12,6 +12,10 @@ urlpatterns = [
     path('addnews/',views.addnews,name="addnews"),
     path('uploadnews/',views.uploadnews,name="uploadnews"),
     path('comments/',views.comment.as_view(),name="comments"),
+    path('like/',views.like.as_view(),name="like"),
+    path('dele/<int:id>/',views.dele,name="dele"),
     path('news/<str:sha>/',views.news,name="news"),
+    path('news/<str:sha>/editsubmit/',views.editsubmit,name="editsubmit"),
+    path('news/<str:sha>/edit/',views.openedit,name="openedit"),
     path('<str:cat>/',views.category,name="category"),
 ]

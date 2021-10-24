@@ -84,7 +84,19 @@ DATABASES = {
         'NAME': 'db.sqlite3',
     }
 }
-
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ddrtecm14uriq',
+        'USER':'nbxzptibhlhcxx',
+        'PASSWORD':'cc371991d7cc9c6d0caad15dc704838a3e5d8dad79d71a2f5a49d3f1653c61a5',
+        'HOST':'ec2-3-220-245-8.compute-1.amazonaws.com',
+        'URL':'postgres://nbxzptibhlhcxx:cc371991d7cc9c6d0caad15dc704838a3e5d8dad79d71a2f5a49d3f1653c61a5@ec2-3-220-245-8.compute-1.amazonaws.com:5432/ddrtecm14uriq',
+        'PORT':'5432',
+    }
+}
+'''
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

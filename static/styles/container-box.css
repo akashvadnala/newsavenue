@@ -1,4 +1,7 @@
-
+.container-box{
+    position: relative;
+    top: 0px;
+}
 
 a{
     color: black;
@@ -75,11 +78,6 @@ a{
 }
 
 @media only screen and (max-width:1680px) {
-
-    .container-box{
-        position: relative;
-        top: 50px;
-    }
 
     .container-box .news{
         margin-left: 5%;

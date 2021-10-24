@@ -10,6 +10,29 @@
     margin-bottom: 10px;
 }
 
+.container-box .news-open .dll{
+    display: grid;
+    grid-template-columns: calc(100% - 100px) 100px;
+}
+
+.container-box .news-open .dll .like{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.container-box .news-open .dll .like div{
+    margin: 4px;
+    font-size: 22px;
+    color: #06c;
+}
+
+.container-box .news-open .dll .like div i{
+    font-size: 24px;
+    color: #06c;
+}
+
 .container-box .news-open .dll .dl .date,
 .container-box .news-open .dll .dl .place{
     color: rgb(100,100,100);
@@ -25,7 +48,27 @@
 
 .container-box .news-open .desc{
     font-size: 17px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+.container-box .news-open .ed{
+    margin-bottom:15px;
+    font-size: 13px;
+} 
+
+.container-box .news-open .ed span{
+    margin-right: 5px;
+}
+
+.container-box .news-open .ed span a{
+    color: rgb(70,70,70);
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.container-box .news-open .ed span a:hover{
+    text-decoration: underline;
 }
 
 .container-box .news-open .comment .comment-in {

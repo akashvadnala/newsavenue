@@ -7,7 +7,6 @@
         <div class="login-in-in">
             <div class="head">
                 <h1>Login</h1>
-                <p>* Required Field</p>
             </div>
 
         <form method="POST" action="{% url 'login' %}">
@@ -17,10 +16,10 @@
                 <input type="hidden" name="next" value="{{ request.GET.next }}">
                 
                 <div class="user">
-                    <input type="text" name="username" placeholder="*Username or Email" required>
+                    <input type="text" name="username" placeholder="Username or Email" required>
                 </div> 
                 <div class="password">
-                    <input type="password" name="password" placeholder="*Password" required>
+                    <input type="password" name="password" placeholder="Password" required>
                 </div>
                 <div class="rememberme">
                     <span><input type="checkbox" name="rememberme" checked></span>
@@ -43,7 +42,6 @@
         <div class="signup-in-in">
             <div class="head">
                 <h1>Sign Up</h1>
-                <p>* Required Field</p>
             </div>
 
         <form method="POST" action="{% url 'signup' %}">
@@ -52,22 +50,22 @@
                 
                 <input type="hidden" name="next" value="{{ request.GET.next }}">
                 <div class="firstname">
-                    <input type="text" name="firstname" placeholder="*First Name" required>
+                    <input type="text" name="firstname" placeholder="First Name" required>
                 </div> 
                 <div class="lastname">
                     <input type="text" name="lastname" placeholder="Last Name">
                 </div> 
                 <div class="email">
-                    <input type="text" name="email" placeholder="*Email" required>
+                    <input type="text" name="email" placeholder="Email" required>
                 </div> 
                 <div class="user">
-                    <input type="text" name="username" placeholder="*Username" required>
+                    <input type="text" name="username" placeholder="Username" required>
                 </div> 
                 <div class="password">
-                    <input type="password" name="password" placeholder="*Password" required>
+                    <input type="password" name="password" placeholder="Password" required>
                 </div>
                 <div class="password">
-                    <input type="password" name="confirm-password" placeholder="*Confirm Password" required>
+                    <input type="password" name="confirm-password" placeholder="Confirm Password" required>
                 </div>
                 <div class="sub">
                     <button>Submit</button>
