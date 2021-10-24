@@ -17,18 +17,29 @@
                         {{post.place}}
                     </div>
                 </div>
-                <div class="like">
-                    <div onclick="postlike()" id="like">
+                {% if user.is_authenticated %}
+                <div class="like userlike">
+                    <div id="like">
                         {% if request.user not in post.likes.all %}
-                        <i class="like fa fa-thumbs-o-up"></i>
+                        <i class="fa fa-thumbs-o-up"></i>
                         {% else %}
-                        <i class="like fa fa-thumbs-up"></i>
+                        <i class="fa fa-thumbs-up"></i>
                         {% endif %}
                     </div>
                     <div class="likecount">
                         {{post.num_likes}}
                     </div>
                 </div>
+                {% else %}
+                <div class="like">
+                    <div id="like">
+                        <i class="fa fa-thumbs-o-up"></i>
+                    </div>
+                    <div class="likecount">
+                        {{post.num_likes}}
+                    </div>
+                </div>
+                {% endif %}
             </div>
             <div class="cover">
                 <img  style="width: 100%;
@@ -83,7 +94,7 @@
     </div>
     <script>
  
- $('.like').on('click',function(){
+ $('.userlike').on('click',function(){
     let id = $("#commid").val();
         $.ajax({
         type:'GET',
@@ -94,10 +105,10 @@
         dataType:'json',
         success:function(data){
             if(data.like){
-                $("#like").html("<i class='fa fa-thumbs-up''></i>");
+                $(".like #like").html("<i class='fa fa-thumbs-up''></i>");
             }
             else{
-                $("#like").html("<i class='fa fa-thumbs-o-up''></i>");
+                $(".like #like").html("<i class='fa fa-thumbs-o-up''></i>");
             }
             $('.likecount').html(`${data.likecount}`);
         },

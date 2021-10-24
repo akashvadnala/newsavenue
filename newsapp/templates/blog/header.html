@@ -68,6 +68,9 @@
     {% if reg.admin %}
     <div><button onclick="window.location.href=`{% url 'addnews' %}`">Add News</button></div>
     {% endif %}
+    {% if user.is_superuser %}
+    <div><button onclick="window.location.href=`/zxcvbnm/`">Admin Panel</button></div>
+    {% endif %}
     <div><button onclick="window.location.href=`{% url 'logout' %}`">Logout</button></div>
 </div>
 {% endif %}
@@ -95,6 +98,9 @@
         <div><button type="reset">Hello {{reg.firstname}}</button></div>
         {% if reg.admin %}
             <div><button onclick="window.location.href=`{% url 'addnews' %}`">Add News</button></div>
+        {% endif %}
+        {% if user.is_superuser %}
+            <div><button onclick="window.location.href=`/zxcvbnm/`">Admin Panel</button></div>
         {% endif %}
         <div><button onclick="window.location.href=`{% url 'logout' %}`">Logout</button></div>
     {% else %}

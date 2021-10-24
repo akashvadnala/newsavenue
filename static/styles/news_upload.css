@@ -20,6 +20,7 @@
     margin-right: 15px;
 }
 
+.container-box .news-upload .con .inp span:nth-child(2) select,
 .container-box .news-upload .con .inp span:nth-child(2) input,
 .container-box .news-upload .con .inp span:nth-child(2) textarea{
     width: 350px;
@@ -30,6 +31,19 @@
     border: 1px solid rgb(192,192,192);
     margin: 1.5px;
     outline: none;
+}
+
+.container-box .news-upload .con .inp span:nth-child(2) select{
+    height: 50px;
+    width: 374px;
+    background: white;
+    cursor: pointer;
+}
+
+.container-box .news-upload .con .inp span:nth-child(2) select option{
+    height: 350px;
+    padding: 5px 12px;
+    cursor: pointer;
 }
 
 .container-box .news-upload .con .inp span:nth-child(2) textarea{

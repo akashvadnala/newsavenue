@@ -316,7 +316,20 @@ def log_in(request):
                 request.session.set_expiry(0)
                 print('sessions out')
         else:
-            print('Username not Found')
+            check=User.objects.filter(email=un)
+            if len(check)>0:
+                un=User.objects.get(email=un).username
+                user = authenticate(username=un,password=pwd)
+                auth.login(request,user)
+                if request.POST.get('rememberme', None):
+                    request.session['usern'] = un
+                    request.session['pwd'] = pwd
+                    print('sessions')
+                else:
+                    request.session.set_expiry(0)
+                    print('sessions out')
+            else:
+                messages.success(request, 'Email not found')
         #if 'next' in request.POST:
          #   return redirect(request.POST['next'])
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
