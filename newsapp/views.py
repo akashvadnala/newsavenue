@@ -26,7 +26,7 @@ def cate():
 def home(request):
     context={}
     context['page_title'] = 'NEWSAVENUE'
-    posts = Post.objects.all().order_by('-post_date')
+    posts = Post.objects.all().order_by('-id')
     context['posts']=posts
     img = PostImage.objects.all()
     context['img']=img
@@ -40,7 +40,7 @@ def home(request):
 def category(request,cat):
     context={}
     context['page_title'] = str(cat).upper()+' - NEWSAVENUE'
-    posts = Post.objects.filter(category=cat).order_by('-post_date')
+    posts = Post.objects.filter(category=cat).order_by('-id')
     context['posts']=posts
     img = PostImage.objects.all()
     context['img']=img
@@ -208,7 +208,11 @@ def editsubmit(request,sha):
         id =request.POST['id']
         post = Post.objects.get(id=id)
         post.post_title = request.POST['title']
-        post.category = request.POST['cate']
+        cat = request.POST['cate']
+        others = request.POST['others']
+        if cat=='others':
+            cat=others
+        post.category = cat
         post.place = request.POST['location']
         post.desc=request.POST['desc']
         if "newsimage" in request.FILES:
@@ -238,7 +242,8 @@ def addnews(request):
 
 def uploadnews(request):
     if request.method=='POST':
-        cate=request.POST['cate']
+        cat=request.POST['cate']
+        others=request.POST['others']
         place=None
         if "location" in request.POST:
             place=request.POST['location']
@@ -249,7 +254,9 @@ def uploadnews(request):
         image = request.FILES["newsimage"]
         print(image)
         print('image uploaded')
-        upload=Post(uname=user,post_title=title,desc=desc,category=cate,place=place,cover=image)
+        if cat=='others':
+            cat=others
+        upload=Post(uname=user,post_title=title,desc=desc,category=cat,place=place,cover=image)
         upload.save()
         upload.sha = hashlib.sha1(str(upload.id).encode()).hexdigest()
         upload.save()

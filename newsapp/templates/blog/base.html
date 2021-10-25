@@ -61,7 +61,14 @@
             function close_log(){
                 $(".log_data").remove();
             }
+            function choosecate(val){
+                var element=document.getElementById('cate');
+                    if(val=='others')
+                        element.style.display='grid';
+                    else  
+                        element.style.display='none';
+            }
         </script>
-    
+        
     </body>
 </html>

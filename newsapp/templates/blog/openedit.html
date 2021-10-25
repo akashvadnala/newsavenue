@@ -18,14 +18,21 @@
                         <div class="inp">
                             <span>*Category</span>
                             <span>
-                                <select name="cate">
+                                <select name="cate" onchange="choosecate(this.value)">
                                     <option value="news">News</option>
                                     <option value="sports">Sports</option>
                                     <option value="tech">Technology</option>
                                     <option value="business">Business</option>
                                     <option value="cinema">Cinema</option>
                                     <option value="health">Health</option>
+                                    <option value="others">Others</option>
                                 </select>
+                            </span>
+                        </div>
+                        <div id="cate" class="inp" style="display: none;">
+                            <span>*Category</span>
+                            <span>
+                                <input type="text" name="others" placeholder="Category">
                             </span>
                         </div>
                         <div class="inp">
