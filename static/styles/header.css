@@ -63,11 +63,13 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    position: sticky;
+    top: 0px;
 }
 
 .bottom{
     position: sticky;
-    top: 0px;
+    top: 45px;
     display: grid;
     grid-template-columns: 25% 50% 25%;
     align-items: center;
@@ -102,12 +104,13 @@ body{
 .toggle{
     height: 0px;
     overflow: hidden;
-    width: 100px;
-    position: absolute;
+    width: 120px;
+    position:fixed;
+    top: 90px;
     left: calc(12.5% - 50px);
     background: rgba(255,255,255,.7);
     backdrop-filter: blur(15px);
-    border-radius: 5px;
+    border-radius: 7px;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
@@ -115,8 +118,12 @@ body{
     z-index: 10000;
 }
 
+.toggle .toggle-in{
+    position: fixed;
+}
+
 .toggle div{
-    padding: 5px;
+    padding: 3px;
 }
 
 .toggle div button{
@@ -143,7 +150,7 @@ body{
     display: block;
 }
 
-bottom .logo div a{
+.bottom .logo div a{
     color: rgb(50,50,50);
     text-decoration: none;
     font-size: 22px;
