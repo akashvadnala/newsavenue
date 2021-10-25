@@ -11,7 +11,7 @@
 .container-box .news-upload .con .inp{
     margin: 10px;
     display: grid;
-    grid-template-columns: 150px calc(100% - 50%);
+    grid-template-columns: 140px calc(100% - 140px);
     align-items: center;
 }
 

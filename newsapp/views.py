@@ -40,7 +40,9 @@ def home(request):
 def category(request,cat):
     context={}
     context['page_title'] = str(cat).upper()+' - NEWSAVENUE'
-    posts = Post.objects.filter(category=cat).order_by('-id')
+    posts=Post.objects.filter(category=cat).order_by('-id')
+    if cat=='news':
+        posts = Post.objects.exclude(category='sports').exclude(category='tech').exclude(category='business').exclude(category='cinema').exclude(category='health').order_by('-id')
     context['posts']=posts
     img = PostImage.objects.all()
     context['img']=img

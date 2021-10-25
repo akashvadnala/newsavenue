@@ -1,8 +1,8 @@
 {% load static %}
 {% static "images" as baseUrl %}
 
-<div class="header">
-    <div class="top">
+
+    <div class="header top">
         <div class="logo">
             <div class="logo-in">
                 <a href="{% url 'home' %}">
@@ -12,7 +12,7 @@
         </div>
         
     </div>
-    <div class="bottom">
+    <div class="header bottom">
         <div class="menu">
             {% if user.is_authenticated %}
             <button onclick="toggledd()" class="name">
@@ -45,7 +45,7 @@
             </form>
         </div>
     </div>
-</div>
+
 <div class="min-header">
     <div class="top">
         <div type="button" class="menu">
@@ -110,7 +110,7 @@
 
 <script>
     $(function(){
-        $('.header .bottom .menu .name').on('click',function(){
+        $('.bottom .menu .name').on('click',function(){
             $('.toggle').toggleClass('show');
             $('.arr').css('translate','rotate( 180deg )');
         });
