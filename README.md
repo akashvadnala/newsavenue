@@ -1,6 +1,6 @@
 # newsavenue
 
-This repository is code for a responsive newsapp, which is developed using HTML, CSS, JS, jQuery, Django Framework.
+This repository is code for a responsive newsapp, which is developed using HTML, CSS, JS, jQuery, Ajax, Django Framework.
 
 You can search the news by the category or search by content.
 
